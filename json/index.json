@@ -1,0 +1,90 @@
+{
+   "marca": [
+        {
+            "nome": "Chevrolet",
+            "modelo": {
+                "modelo1": "Onix",
+                "modelo2": "Prisma",
+                "modelo3": "Spin"
+            }
+        },
+        {
+            "nome": "Ford",
+            "modelo": {
+                "modelo1": "Ka",
+                "modelo2": "Fiesta",
+                "modelo3": "EcoSport"
+            }
+        }
+    ],
+    "carros": [
+        {
+            "placa": "ABC1D23",
+            "cor": "cinza",
+            "marca": "Ford",
+            "modelo": "Ka"
+        },
+        {
+            "placa": "XYZ4E56",
+            "cor": "Preto",
+            "marca": "Ford",
+            "modelo": "Fiesta"
+        },
+        {
+            "placa": "QWE7R89",
+            "cor": "cinza",
+            "marca": "Ford",
+            "modelo": "EcoSport"
+        },
+        {
+            "placa": "JKL3T12",
+            "cor": "branco",
+            "marca": "Chevrolet",
+            "modelo": "Onix"
+        },
+        {
+            "placa": "PQR6A78",
+            "cor": "azul",
+            "marca": "Chevrolet",
+            "modelo": "Prisma"
+        },
+        {
+            "placa": "MNO5Y34",
+            "cor": "preto",
+            "marca": "Chevrolet",
+            "modelo": "Spin"
+        }
+    ],
+    "motorista": [
+        {
+            "nome":"gleidson",
+            "cnh": "12345678900",
+            "estado": "livre"
+        },
+        {
+            "nome":"Edivan",
+            "cnh": "98765432101",
+            "estado": "livre"
+        },
+        {
+            "nome":"Yara",
+            "cnh": "45678912302",
+            "estado": "livre"
+        },
+        {
+            "nome":"Luis",
+            "cnh": "78912345603",
+            "estado": "livre"
+        },
+        {
+            "nome":"Pamplona",
+            "cnh": "65432198704",
+            "estado": "livre"
+        },
+        {
+            "nome":"Deda",
+            "cnh": "32198765405",
+            "estado": "livre"
+        }
+    ]
+}
