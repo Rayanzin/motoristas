@@ -1,0 +1,78 @@
+{
+    "posts": {
+        "marca": [
+            {
+                "nome": "Chevrolet",
+                "modelos": [
+                    {
+                        "nome": "Onix",
+                        "placa": "JKL3T12",
+                        "cor": "branco"
+                    },
+                    {
+                        "nome": "Prisma",
+                        "placa": "PQR6A78",
+                        "cor": "azul"
+                    },
+                    {
+                        "nome": "Spin",
+                        "placa": "MNO5Y34",
+                        "cor": "preto"
+                    }
+                ]
+            },
+            {
+                "nome": "Ford",
+                "modelos": [
+                    {
+                        "nome": "Ka",
+                        "placa": "ABC1D23",
+                        "cor": "cinza"
+                    },
+                    {
+                        "nome": "Fiesta",
+                        "placa": "XYZ4E56",
+                        "cor": "Preto"
+                    },
+                    {
+                        "nome": "EcoSport",
+                        "placa": "QWE7R89",
+                        "cor": "cinza"
+                    }
+                ]
+            }
+        ],
+        "motorista": [
+            {
+                "nome": "gleidson",
+                "cnh": "12345678900",
+                "estado": "livre"
+            },
+            {
+                "nome": "Edivan",
+                "cnh": "98765432101",
+                "estado": "livre"
+            },
+            {
+                "nome": "Yara",
+                "cnh": "45678912302",
+                "estado": "livre"
+            },
+            {
+                "nome": "Luis",
+                "cnh": "78912345603",
+                "estado": "livre"
+            },
+            {
+                "nome": "Pamplona",
+                "cnh": "65432198704",
+                "estado": "livre"
+            },
+            {
+                "nome": "Deda",
+                "cnh": "32198765405",
+                "estado": "livre"
+            }
+        ]
+    }
+}

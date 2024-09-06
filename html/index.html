@@ -19,7 +19,7 @@
                 <tr>
                     <th>Marca</th>
                     <th>Modelo</th>
-                    <th><button>Adicionar Carro</button></th>
+                    <th><button onclick="adicionarCarro()">Adicionar Carro</button></th>
                 </tr>
             </thead>
             <tr>
@@ -30,26 +30,29 @@
                     <abbr title="Excluir carro"><button id="lixo"><box-icon type='solid' name='trash'></box-icon></button></abbr>
                 </td>
             </tr>
-            <tr>
-                <td>Chevrolet</td>
-                <td>Onix</td>
-                <td>
-                    <abbr title="Editar carro"><button><box-icon type='solid' name='pencil'></box-icon></button></abbr>
-                    <abbr title="Excluir carro"><button id="lixo"><box-icon type='solid' name='trash'></box-icon></button></abbr>
-                </td>
-            </tr>
-            <tr>
-                <td>Chevrolet</td>
-                <td>Onix</td>
-                <td>
-                    <abbr title="Editar carro"><button><box-icon type='solid' name='pencil'></box-icon></button></abbr>
-                    <abbr title="Excluir carro"><button id="lixo"><box-icon type='solid' name='trash'></box-icon></button></abbr>
-                </td>
-            </tr>
-            
-
         </table>
     </main>
+    <div id="overlay"></div>
+    <div id="addcarros">
+        <header>
+            Carros
+        </header>
+        <form>
+            <label for="mark">Marca:</label>
+            <select type="text" id="mark" onchange="listarModelos()">
+            </select>
+            <label for="modelo" id="lmodelo">Modelo:</label>
+            <select type="text" id="modelo" required>
+            </select>
+            <label for="cor" id="lcor">Cor:</label>
+            <select type="text" id="cor" required>
+            </select>
+            <label for="placa" id="lplaca">Placa</label>
+            <select type="text" id="placa" required>
+            </select>
+            <button>Adicionar</button>
+        </form>
+    </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="../js/index.js"></script>
 </body>
