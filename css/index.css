@@ -31,14 +31,13 @@ main {
 table {
     border-collapse: collapse;
     margin: auto;
-    width: 100%;
-
+    width: 98%;
+    margin-bottom: 10px;
     & th {
-        padding: 10px;
+        padding: 5px;
         border: 1px solid black;
         font-size: 1.2em;
         background-color: rgb(136, 134, 134);
-
         & button {
             border: none;
             background-color: rgb(199, 158, 54);
@@ -53,17 +52,11 @@ table {
             }
         }
     }
-
-    & tr:nth-child(even){
-        background-color: rgb(211, 207, 207);
-    }
-
     & td {
-        width: 25%;
-        padding: 10px;
-        border: 1px solid black;
+        /* width: 25%; */
+        padding: 5px;
         text-align: center;
-
+        border: 1px solid black;
         & button {
             border: none;
             background-color: rgb(197, 197, 195);
@@ -82,6 +75,7 @@ table {
         & #lixo:hover{
             fill: rgb(243, 26, 26);
         }
+        
     }
 }
 #overlay{
@@ -106,6 +100,7 @@ table {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.418);
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
@@ -135,10 +130,45 @@ table {
             padding: 10px;
             background-color: goldenrod;
             border-radius: 10px;
+            cursor: pointer ;
         }
 
     }
 }
 #placa,#cor,#modelo,#lplaca,#lcor,#lmodelo{
     display: none;
+}
+#erro{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 5px solid red;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    &.active{
+        opacity: 1;
+        visibility: visible;
+    }
+    & #exit{
+        display: block;
+        cursor: pointer;
+        margin-inline-start: auto;
+        &:hover{
+            fill: red;
+        }
+    }
+    & h2{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 2em;
+        fill: red;
+    }
 }
