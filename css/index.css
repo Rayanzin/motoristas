@@ -72,7 +72,7 @@ table {
 
             
         }
-        & #lixo:hover{
+        & .lixo:hover{
             fill: rgb(243, 26, 26);
         }
         
@@ -143,6 +143,7 @@ table {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    width: 400px;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -170,5 +171,45 @@ table {
         gap: 5px;
         font-size: 2em;
         fill: red;
+    }
+}
+#confirmar{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    &.active{
+        opacity: 1;
+        visibility: visible;
+    }
+    & div{
+        margin-top: 20px;
+        display: flex;
+        gap: 20px;
+        & button{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: rgb(243, 37, 37);
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            &:hover{
+            background-color: darkred;
+            }
+            &:nth-child(2){
+                background-color: rgb(51, 90, 229);
+                &:hover{
+                    background-color: rgb(39, 39, 195);
+                }
+            }
+        }
     }
 }

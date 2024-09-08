@@ -46,7 +46,14 @@
     <div id="erro">
         <box-icon id="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
         <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
-        <p>Este carro já existe, por favor selecione outro!</p>
+        <p>O carro já existe ou não foi selecionado, por favor selecione outro!</p>
+    </div>
+    <div id="confirmar">
+        <h2>Deseja realmente excluir?</h2>
+        <div>
+            <button onclick="fecharConfirmarExcluir()">Cancelar</button>
+            <button onclick="excluirCarro()">Confirmar</button>
+        </div>
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="../js/index.js"></script>

@@ -1,5 +1,5 @@
 let dados
-fetch("http://localhost:3000/posts").then(function (response) {
+fetch("http://localhost:3000/users").then(function (response) {
     response.json().then(function (data) {
         listarCarros(data)
         console.log(data);
@@ -19,6 +19,7 @@ overlay.addEventListener('click', (e => {
     overlay.classList.remove("active")
     addcarros.classList.remove("active")
     erro.classList.remove('active')
+    confirmar.classList.remove("active")
 }))
 function listarCarros(dados) {
     mark.innerHTML = `<option selected disabled value="selecione">Selecione</option>`
@@ -53,21 +54,22 @@ btn.addEventListener('click', (e => {
     e.preventDefault()
 }))
 let arrayplacas = []
+
 function inserirCarro() {
     if (arrayplacas.indexOf(placa.value) == -1) {
-        arrayplacas.push(placa.value)
         if (mark.value != 'selecione' && modelo.value != 'selecione') {
+            arrayplacas.push(placa.value)
             let car = dados.marca[mark.value]
             table.innerHTML += `
-                    <tr>
+                    <tr id="tr${arrayplacas.length - 1}">
                         <td>${car.nome}</td>
                         <td>${car.modelos[modelo.value].nome}</td>
                         <td>${cor.value}</td>
                         <td>${placa.value}</td>
                         
                         <td>
-                            <abbr title="Editar carro"><button><box-icon type='solid' name='pencil'></box-icon></button></abbr>
-                            <abbr title="Excluir carro"><button id="lixo"><box-icon type='solid'
+                            <abbr title="Editar carro"><button onclick="editarCarro()"><box-icon type='solid' name='pencil'></box-icon></button></abbr>
+                            <abbr title="Excluir carro"><button value="${placa.value}" class="lixo" onclick="desejaExcluir(this)" ><box-icon type='solid'
                                         name='trash'></box-icon></button></abbr>
                         </td>
                     </tr>
@@ -79,6 +81,27 @@ function inserirCarro() {
         erro.classList.add("active")
     }
 }
-function fecharTelaDeErro(){
+function fecharTelaDeErro() {
     erro.classList.remove('active')
+}
+let lixeira
+function desejaExcluir(tr) {
+    lixeira = tr
+    confirmar.classList.add("active")
+    overlay.classList.add("active")
+}
+function fecharConfirmarExcluir() {
+    confirmar.classList.remove("active")
+    overlay.classList.remove("active")
+}
+function excluirCarro() {
+    let abbr = lixeira.parentElement
+    let td = abbr.parentElement
+    td.parentElement.remove()
+    confirmar.classList.remove("active")
+    overlay.classList.remove("active")
+    arrayplacas.splice(placa.value, 1)
+}
+function editarCarro(){
+    
 }
