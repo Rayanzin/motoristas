@@ -213,3 +213,47 @@ table {
         }
     }
 }
+#edicao{
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: .3s;
+    overflow: hidden;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.32);
+    & header{
+        margin: -20px -20px 10px -20px;
+        padding: 20px;
+    }
+    & label{
+        font-weight: bold;
+    }
+    & select{
+        width: 100%;
+        padding: 3px;
+        border-radius: 10px;
+        margin-top: 5px;
+    }
+    &.active{
+        opacity: 1;
+        visibility: visible;
+    }
+    & button{
+        width: 100%;
+        margin-top: 10px;
+        border: none;
+        background-color: goldenrod;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 5px;
+        font-weight: bold;
+        &:hover{
+            background-color: rgb(177, 135, 26);
+        }
+    }
+}

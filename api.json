@@ -7,17 +7,65 @@
           {
             "nome": "onix",
             "placa": "JKL3T12",
-            "cor": "branco"
+            "cores": [
+              {
+                "cor": "branco"
+              },
+              {
+                "cor": "preto"
+              },
+              {
+                "cor": "cinza"
+              },
+              {
+                "cor": "azul"
+              },
+              {
+                "cor": "amarelo"
+              }
+            ]
           },
           {
             "nome": "prisma",
             "placa": "PQR6A78",
-            "cor": "azul"
+            "cores": [
+              {
+                "cor": "branco"
+              },
+              {
+                "cor": "preto"
+              },
+              {
+                "cor": "cinza"
+              },
+              {
+                "cor": "azul"
+              },
+              {
+                "cor": "amarelo"
+              }
+            ]
           },
           {
             "nome": "spin",
             "placa": "MNO5Y34",
-            "cor": "preto"
+            "cores": [
+              {
+                "cor": "branco"
+              },
+              {
+                "cor": "preto"
+              },
+              {
+                "cor": "cinza"
+              },
+              {
+                "cor": "azul"
+              },
+              {
+                "cor": "amarelo"
+              }
+            ]
           }
         ]
       },
@@ -27,17 +75,65 @@
           {
             "nome": "ka",
             "placa": "ABC1D23",
-            "cor": "cinza"
+            "cores": [
+              {
+                "cor": "branco"
+              },
+              {
+                "cor": "preto"
+              },
+              {
+                "cor": "cinza"
+              },
+              {
+                "cor": "azul"
+              },
+              {
+                "cor": "amarelo"
+              }
+            ]
           },
           {
             "nome": "fiesta",
             "placa": "XYZ4E56",
-            "cor": "Preto"
+            "cores": [
+              {
+                "cor": "branco"
+              },
+              {
+                "cor": "preto"
+              },
+              {
+                "cor": "cinza"
+              },
+              {
+                "cor": "azul"
+              },
+              {
+                "cor": "amarelo"
+              }
+            ]
           },
           {
             "nome": "ecoSport",
             "placa": "QWE7R89",
-            "cor": "cinza"
+            "cores": [
+              {
+                "cor": "branco"
+              },
+              {
+                "cor": "preto"
+              },
+              {
+                "cor": "cinza"
+              },
+              {
+                "cor": "azul"
+              },
+              {
+                "cor": "amarelo"
+              }
+            ]
           }
         ]
       }

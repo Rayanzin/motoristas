@@ -20,6 +20,7 @@ overlay.addEventListener('click', (e => {
     addcarros.classList.remove("active")
     erro.classList.remove('active')
     confirmar.classList.remove("active")
+    edicao.classList.remove("active")
 }))
 function listarCarros(dados) {
     mark.innerHTML = `<option selected disabled value="selecione">Selecione</option>`
@@ -43,18 +44,22 @@ function listarModelos() {
 }
 function listarDetalhes() {
     let car = dados.marca[mark.value].modelos[modelo.value]
+    cor.innerHTML = ``
+    mudarcores = ``
+    for(let i = 0; i <= car.cores.length-1;i++){
+        cor.innerHTML += `<option>${car.cores[i].cor}</option>`
+        mudarcor.innerHTML += `<option>${car.cores[i].cor}</option>`
+    }
     lcor.style.display = 'block'
     cor.style.display = 'block'
     lplaca.style.display = 'block'
     placa.style.display = 'block'
-    cor.innerHTML = `<option>${car.cor}</option>`
     placa.innerHTML = `<option value="${car.placa}">${car.placa}</option>`
 }
 btn.addEventListener('click', (e => {
     e.preventDefault()
 }))
 let arrayplacas = []
-
 function inserirCarro() {
     if (arrayplacas.indexOf(placa.value) == -1) {
         if (mark.value != 'selecione' && modelo.value != 'selecione') {
@@ -103,5 +108,6 @@ function excluirCarro() {
     arrayplacas.splice(placa.value, 1)
 }
 function editarCarro(){
-    
+    overlay.classList.add("active")
+    edicao.classList.add("active")
 }
