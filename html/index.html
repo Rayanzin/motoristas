@@ -11,25 +11,42 @@
 
 <body>
     <main>
-        <header>
-            <h2>Modelos de carros</h2>
-        </header>
-        <table id="table">
-            <thead>
-                <tr>
-                    <th>Marca</th>
-                    <th>Modelo</th>
-                    <th>Cor</th>
-                    <th>Placa</th>
-                    <th><button onclick="adicionarCarro()">Adicionar Carro</button></th>
-                </tr>
-            </thead>
-        </table>
+        <section id="tabeladecarros">
+            <header>
+                <h2>Modelos de carros</h2>
+            </header>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Cor</th>
+                        <th>Placa</th>
+                        <th><button onclick="adicionarCarro()">Adicionar Carro</button></th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+        <section id="motorista">
+            <header>
+                <h2>Motoristas</h2>
+            </header>
+            <table id="motoristas">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Estado</th>
+                        <th><button onclick="adicionarMotorista()">Adicionar Motorista</button>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
     </main>
     <div id="overlay"></div>
-    <div id="addcarros">
+    <div id="addcarros" class="modal">
         <header>
-            Carros
+            <h2>Carros</h2>
         </header>
         <form>
             <label for="mark">Marca:</label>
@@ -55,17 +72,34 @@
             <button onclick="excluirCarro()">Confirmar</button>
         </div>
     </div>
-    <div id="edicao">
+    <div id="edicao" class="modal">
         <header>
             <h2>Editar carro</h2>
         </header>
         <label for="mudarcor">cor:</label>
-        <select id="mudarcor">
+        <select id="mudarcor" onchange="changeCor()">
             <option>selecione</option>
         </select>
-        <button>Editar</button>
+        <button onclick="editarCor()">Editar</button>
+    </div>
+    <div id="addmotorista" class="modal">
+        <header>
+            <h2>Motoristas</h2>
+        </header>
+        <select id="driver">
+            <option>selecione</option>
+        </select>
+        <button>Adicionar</button>
+    </div>
+    <div id="btn-cars" onclick="tableCars()">
+        <box-icon type='solid' name='car'></box-icon>
+    </div>
+    <div id="btn-driver" onclick="tableDrivers()">
+        <box-icon name='user' type='solid' ></box-icon>
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="../js/index.js"></script>
+    <!-- npm init -y -->
+    <!-- npx json-server api.json --port 3000 --watch -->
 </body>
 </html>

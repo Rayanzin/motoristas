@@ -28,16 +28,18 @@ main {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.363);
 }
 
-table {
+table,#motoristas{
     border-collapse: collapse;
     margin: auto;
     width: 98%;
     margin-bottom: 10px;
+
     & th {
         padding: 5px;
         border: 1px solid black;
         font-size: 1.2em;
         background-color: rgb(136, 134, 134);
+
         & button {
             border: none;
             background-color: rgb(199, 158, 54);
@@ -52,11 +54,13 @@ table {
             }
         }
     }
+
     & td {
         /* width: 25%; */
         padding: 5px;
         text-align: center;
         border: 1px solid black;
+
         & button {
             border: none;
             background-color: rgb(197, 197, 195);
@@ -69,16 +73,25 @@ table {
                 fill: rgb(223, 161, 5);
                 color: rgba(0, 0, 0, 0.712);
             }
-
-            
         }
-        & .lixo:hover{
+
+        & .lixo:hover {
             fill: rgb(243, 26, 26);
         }
-        
     }
 }
-#overlay{
+section{
+    display: none ;
+}
+#motorista{
+    display: block;
+    & #motoristas{
+        & th{
+            width: 33%;
+        }
+    }
+}
+#overlay {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -86,63 +99,46 @@ table {
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-    &.active{
+
+    &.active {
         opacity: 1;
         visibility: visible;
     }
 }
-#addcarros{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.418);
+
+#addcarros {
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-    &.active{
+
+    &.active {
         opacity: 1;
         visibility: visible;
     }
-    & header{
-        margin: -20px -20px 10px -20px;
-        font-weight: bold;
-    }
-    & form{
-        & label{
+    & form {
+        width: 250px;
+        & label {
             font-weight: bold;
+            margin-top: 10px;
         }
-        & select{
-            width: 100%;
-            border: 1px solid black;
-            padding: 10px;
-            border-radius: 10px;
-            margin: 10px 0px;
-        }
-        & button{
-            width: 100%;
-            border: none;
-            padding: 10px;
-            background-color: goldenrod;
-            border-radius: 10px;
-            cursor: pointer ;
-        }
-
     }
 }
-#placa,#cor,#modelo,#lplaca,#lcor,#lmodelo{
+
+#placa,
+#cor,
+#modelo,
+#lplaca,
+#lcor,
+#lmodelo {
     display: none;
 }
-#erro{
+
+#erro {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 400px;
     background-color: white;
     padding: 20px;
@@ -151,19 +147,23 @@ table {
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-    &.active{
+
+    &.active {
         opacity: 1;
         visibility: visible;
     }
-    & #exit{
+
+    & #exit {
         display: block;
         cursor: pointer;
         margin-inline-start: auto;
-        &:hover{
+
+        &:hover {
             fill: red;
         }
     }
-    & h2{
+
+    & h2 {
         margin-bottom: 10px;
         display: flex;
         align-items: center;
@@ -173,26 +173,30 @@ table {
         fill: red;
     }
 }
-#confirmar{
+
+#confirmar {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-    &.active{
+
+    &.active {
         opacity: 1;
         visibility: visible;
     }
-    & div{
+
+    & div {
         margin-top: 20px;
         display: flex;
         gap: 20px;
-        & button{
+
+        & button {
             width: 100%;
             padding: 10px;
             border: none;
@@ -201,49 +205,57 @@ table {
             color: white;
             font-weight: bold;
             cursor: pointer;
-            &:hover{
-            background-color: darkred;
+
+            &:hover {
+                background-color: darkred;
             }
-            &:nth-child(2){
+
+            &:nth-child(2) {
                 background-color: rgb(51, 90, 229);
-                &:hover{
+
+                &:hover {
                     background-color: rgb(39, 39, 195);
                 }
             }
         }
     }
 }
-#edicao{
-    background-color: white;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 10px;
-    padding: 20px;
+
+#edicao {
     opacity: 0;
     visibility: hidden;
     transform: .3s;
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.32);
-    & header{
-        margin: -20px -20px 10px -20px;
-        padding: 20px;
-    }
-    & label{
+    & label {
         font-weight: bold;
     }
-    & select{
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.modal{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.446);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    padding: 20px;
+    & header{
+        margin: -20px -20px 10px -20px;
+    }
+    & select {
         width: 100%;
         padding: 3px;
         border-radius: 10px;
         margin-top: 5px;
+        font-weight: bold;
     }
-    &.active{
-        opacity: 1;
-        visibility: visible;
-    }
-    & button{
+    & button {
         width: 100%;
         margin-top: 10px;
         border: none;
@@ -252,8 +264,39 @@ table {
         border-radius: 10px;
         padding: 5px;
         font-weight: bold;
-        &:hover{
+
+        &:hover {
             background-color: rgb(177, 135, 26);
         }
+    }
+}
+#addmotorista{
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    &.active{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+#btn-driver,#btn-cars{
+    position: relative;
+    top: 0px;
+    left: 10px;
+    background-color: goldenrod;
+    border-radius: 50%;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.37);
+    transition: .3s;
+    &:hover {
+        background-color: rgb(177, 135, 26);
+        width: 55px;
+        height: 55px;
     }
 }

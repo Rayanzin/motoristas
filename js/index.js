@@ -21,6 +21,7 @@ overlay.addEventListener('click', (e => {
     erro.classList.remove('active')
     confirmar.classList.remove("active")
     edicao.classList.remove("active")
+    addmotorista.classList.remove("active")
 }))
 function listarCarros(dados) {
     mark.innerHTML = `<option selected disabled value="selecione">Selecione</option>`
@@ -45,7 +46,7 @@ function listarModelos() {
 function listarDetalhes() {
     let car = dados.marca[mark.value].modelos[modelo.value]
     cor.innerHTML = ``
-    mudarcores = ``
+    mudarcor.innerHTML = ``
     for(let i = 0; i <= car.cores.length-1;i++){
         cor.innerHTML += `<option>${car.cores[i].cor}</option>`
         mudarcor.innerHTML += `<option>${car.cores[i].cor}</option>`
@@ -69,11 +70,11 @@ function inserirCarro() {
                     <tr id="tr${arrayplacas.length - 1}">
                         <td>${car.nome}</td>
                         <td>${car.modelos[modelo.value].nome}</td>
-                        <td>${cor.value}</td>
+                        <td class="cor">${cor.value}</td>
                         <td>${placa.value}</td>
                         
                         <td>
-                            <abbr title="Editar carro"><button onclick="editarCarro()"><box-icon type='solid' name='pencil'></box-icon></button></abbr>
+                            <abbr title="Editar carro"><button onclick="editarCarro(this)"><box-icon type='solid' name='pencil'></box-icon></button></abbr>
                             <abbr title="Excluir carro"><button value="${placa.value}" class="lixo" onclick="desejaExcluir(this)" ><box-icon type='solid'
                                         name='trash'></box-icon></button></abbr>
                         </td>
@@ -107,7 +108,30 @@ function excluirCarro() {
     overlay.classList.remove("active")
     arrayplacas.splice(placa.value, 1)
 }
-function editarCarro(){
+let corSelecionada
+function editarCarro(button){
+    row = button.closest('tr')
+    corSelecionada = row.querySelector('.cor')
     overlay.classList.add("active")
     edicao.classList.add("active")
+}
+function editarCor(){
+    corSelecionada.innerHTML = changeCor()
+    overlay.classList.remove("active")
+    edicao.classList.remove("active")
+}
+function changeCor(){
+  return mudarcor.value
+}
+function adicionarMotorista(){
+    addmotorista.classList.add("active")
+    overlay.classList.add("active")
+}
+function tableCars(){
+    tabeladecarros.style.display = 'block'
+    motorista.style.display = 'none'
+}
+function tableDrivers(){
+    tabeladecarros.style.display = 'none'
+    motorista.style.display = 'block'
 }
