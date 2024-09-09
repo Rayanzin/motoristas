@@ -28,7 +28,8 @@ main {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.363);
 }
 
-table,#motoristas{
+table,
+#motoristas {
     border-collapse: collapse;
     margin: auto;
     width: 98%;
@@ -68,6 +69,7 @@ table,#motoristas{
             border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
+            transition: .3s;
 
             &:hover {
                 fill: rgb(223, 161, 5);
@@ -75,22 +77,30 @@ table,#motoristas{
             }
         }
 
+        & .eye:hover {
+            fill: rgb(115, 106, 252);
+        }
+
         & .lixo:hover {
             fill: rgb(243, 26, 26);
         }
     }
 }
-section{
-    display: none ;
+
+section {
+    display: none;
 }
-#motorista{
+
+#motorista {
     display: block;
-    & #motoristas{
-        & th{
+
+    & #motoristas {
+        & th {
             width: 33%;
         }
     }
 }
+
 #overlay {
     position: fixed;
     width: 100%;
@@ -116,8 +126,10 @@ section{
         opacity: 1;
         visibility: visible;
     }
+
     & form {
         width: 250px;
+
         & label {
             font-weight: bold;
             margin-top: 10px;
@@ -134,7 +146,7 @@ section{
     display: none;
 }
 
-#erro {
+.erro {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -153,7 +165,7 @@ section{
         visibility: visible;
     }
 
-    & #exit {
+    & .exit {
         display: block;
         cursor: pointer;
         margin-inline-start: auto;
@@ -171,6 +183,9 @@ section{
         gap: 5px;
         font-size: 2em;
         fill: red;
+    }
+    & p{
+        text-align: center;
     }
 }
 
@@ -227,15 +242,18 @@ section{
     transform: .3s;
     overflow: hidden;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.32);
+
     & label {
         font-weight: bold;
     }
+
     &.active {
         opacity: 1;
         visibility: visible;
     }
 }
-.modal{
+
+.modal {
     background-color: white;
     border-radius: 10px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.446);
@@ -245,16 +263,19 @@ section{
     transform: translate(-50%, -50%);
     overflow: hidden;
     padding: 20px;
-    & header{
+
+    & header {
         margin: -20px -20px 10px -20px;
     }
+
     & select {
         width: 100%;
         padding: 3px;
         border-radius: 10px;
-        margin-top: 5px;
+        margin: 10px 0px;
         font-weight: bold;
     }
+
     & button {
         width: 100%;
         margin-top: 10px;
@@ -269,17 +290,36 @@ section{
             background-color: rgb(177, 135, 26);
         }
     }
+
+    & label {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    & input {
+        width: 100%;
+        border-radius: 10px;
+        border: 2px solid black;
+        padding: 5px;
+        padding-left: 10px;
+        margin: 10px 0px;
+    }
 }
-#addmotorista{
+
+#addmotorista {
+    width: 300px;
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-    &.active{
+
+    &.active {
         opacity: 1;
         visibility: visible;
     }
 }
-#btn-driver,#btn-cars{
+
+#btn-driver,
+#btn-cars {
     position: relative;
     top: 0px;
     left: 10px;
@@ -294,9 +334,21 @@ section{
     cursor: pointer;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.37);
     transition: .3s;
+
     &:hover {
         background-color: rgb(177, 135, 26);
         width: 55px;
         height: 55px;
+    }
+}
+#atrelamento{
+    width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
     }
 }

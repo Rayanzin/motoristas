@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pr-br">
 
 <head>
     <meta charset="UTF-8">
@@ -60,8 +60,8 @@
             <button id="btn" onclick="inserirCarro()">Adicionar</button>
         </form>
     </div>
-    <div id="erro">
-        <box-icon id="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
+    <div id="erro" class="erro">
+        <box-icon class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
         <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>O carro já existe ou não foi selecionado, por favor selecione outro!</p>
     </div>
@@ -86,20 +86,42 @@
         <header>
             <h2>Motoristas</h2>
         </header>
-        <select id="driver">
-            <option>selecione</option>
-        </select>
-        <button>Adicionar</button>
+        <label for="driver">Motorista:</label>
+        <input type="text" id="driver" placeholder="Digite Seu Nome" required>
+        <!-- <select id="driver" onchange="listarCnh()"></select> -->
+        <label for="cnh">Cnh:</label>
+        <input type="number" id="cnh" placeholder="EX: 1234567890">
+        <p id="estado"></p>
+        <button onclick="inserirMotorista()">Adicionar</button>
     </div>
     <div id="btn-cars" onclick="tableCars()">
         <box-icon type='solid' name='car'></box-icon>
     </div>
     <div id="btn-driver" onclick="tableDrivers()">
-        <box-icon name='user' type='solid' ></box-icon>
+        <box-icon name='user' type='solid'></box-icon>
+    </div>
+    <div id="errodecnh" class="modal erro">
+        <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
+        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <p>CNH incorreta ou já existente</p>
+    </div>
+    <div id="preencher" class="modal erro">
+        <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
+        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <p>Há campos a serem preenchidos</p>
+    </div>
+    <div id="atrelamento" class="modal">
+        <header>
+            <h2>Atrelamento</h2>
+        </header>
+        <p id="paragrafo"></p>
+        <select id="carrosadicionados"></select>
+        <button>Atrelar</button>
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="../js/index.js"></script>
     <!-- npm init -y -->
     <!-- npx json-server api.json --port 3000 --watch -->
 </body>
+
 </html>
