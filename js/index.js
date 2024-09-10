@@ -1,5 +1,5 @@
 let dados
-fetch("http://localhost:3000/users").then(function (response) {
+fetch("http://localhost:300/users").then(function (response) {
     response.json().then(function (data) {
         listarCarros(data)
         console.log(data);
@@ -27,6 +27,30 @@ overlay.addEventListener('click', (e => {
     atrelamento.classList.remove("active")
     paragrafo.innerHTML = ``
 }))
+btncars.addEventListener('click', e => {
+    overlay.classList.remove("active")
+    addcarros.classList.remove("active")
+    erro.classList.remove('active')
+    confirmar.classList.remove("active")
+    edicao.classList.remove("active")
+    addmotorista.classList.remove("active")
+    preencher.classList.remove("active")
+    errodecnh.classList.remove('active')
+    atrelamento.classList.remove("active")
+    paragrafo.innerHTML = ``
+})
+btndriver.addEventListener('click', e => {
+    overlay.classList.remove("active")
+    addcarros.classList.remove("active")
+    erro.classList.remove('active')
+    confirmar.classList.remove("active")
+    edicao.classList.remove("active")
+    addmotorista.classList.remove("active")
+    preencher.classList.remove("active")
+    errodecnh.classList.remove('active')
+    atrelamento.classList.remove("active")
+    paragrafo.innerHTML = ``
+})
 function listarCarros(dados) {
     mark.innerHTML = `<option selected disabled value="selecione">Selecione</option>`
     for (let i = 0; i <= dados.marca.length - 1; i++) {
@@ -73,10 +97,10 @@ function inserirCarro() {
             let car = dados.marca[mark.value]
             table.innerHTML += `
                     <tr>
-                        <td value="${car.nome}">${car.nome}</td>
-                        <td value="${car.modelos[modelo.value].nome}">${car.modelos[modelo.value].nome}</td>
+                        <td>${car.nome}</td>
+                        <td>${car.modelos[modelo.value].nome}</td>
                         <td class="cor" value="${cor.value}">${cor.value}</td>
-                        <td value="${placa.value}">${placa.value}</td>
+                        <td>${placa.value}</td>
                         
                         <td>
                             <abbr title="Editar carro"><button onclick="editarCarro(this)"><box-icon type='solid' name='pencil'></box-icon></button></abbr>
@@ -87,7 +111,14 @@ function inserirCarro() {
          `
             addcarros.classList.remove("active")
             overlay.classList.remove("active")
-            arraycarros.push()
+            arraycarros.push(
+                {
+                    marca: `${car.nome}`,
+                    modelo: `${car.modelos[modelo.value].nome}`,
+                    cor: `${cor.value}`,
+                    placa: `${placa.value}`
+                }
+            )
         }
     } else {
         erro.classList.add("active")
@@ -117,7 +148,8 @@ function excluirCarro() {
     overlay.classList.remove("active")
     arrayplacas.splice(placa.value, 1)
     cnhs.splice(placa.value, 1)
-    
+    carroatrelado.splice(carrosadicionados.value, 1)
+    count--
 }
 let corSelecionada
 function editarCarro(button) {
@@ -152,40 +184,90 @@ cnh.addEventListener('keyup', (e => {
     e.target.value = carteira
 }))
 let cnhs = []
+let arraymotoristas = []
+let count = -1
+let rowdriver
 function inserirMotorista() {
-    console.log(cnhs);
-    
+    atualizarPosicoes()
     if (cnhs.indexOf(cnh.value) == -1) {
         if (driver.value != '' && cnh.value != '') {
             cnhs.push(cnh.value)
             motoristas.innerHTML += `
-                        <tr>
-                            <td class="nomedomotorista" value="${driver.value}">${driver.value}</td>
-                            <td class="estado">livre</td>
-                            <td>
-                                <abbr title="Detalhes"><button class="eye"><box-icon name='show-alt'></box-icon></button></abbr>
-                                <abbr title="Editar carro"><button onclick="atrelarCarro(this)"><box-icon type='solid' name='car'></box-icon></button></abbr>
-                                <abbr title="Excluir carro"><button class="lixo" value="${cnh.value}" onclick="desejaExcluir(this)" ><box-icon type='solid'
-                                            name='trash'></box-icon></button></abbr>
-                            </td>
-                        </tr>
-        `
+            <tr value="">
+            <td class="nomedomotorista" value="${driver.value}">${driver.value}</td>
+            <td class="estado">livre</td>
+            <td>
+            <abbr title="Detalhes"><button class="eye"><box-icon name='show-alt'></box-icon></button></abbr>
+            <abbr title="Atrelar Carro"><button class="atrelarcarro" value="atualizarPosicoes()" onclick="atrelarCarro(this)"><box-icon type='solid' name='car'></box-icon></button></abbr>
+            <abbr title="Excluir Motorista"><button class="lixo" value="${cnh.value}" onclick="desejaExcluir(this)" ><box-icon type='solid'
+            name='trash'></box-icon></button></abbr>
+            </td>
+            </tr>
+            `
+            count++
             addmotorista.classList.remove("active")
             overlay.classList.remove("active")
+            arraymotoristas.push(
+                {
+                    nome: `${driver.value}`,
+                    estado: "livre",
+                    carro: ``
+                }
+            )
+            console.log(arraymotoristas);
+
         } else {
             preencher.classList.add("active")
         }
-    }else{
+    } else {
         errodecnh.classList.add("active")
     }
 }
 let condutor
-function atrelarCarro(button){
+let atrelarcarro
+function atrelarCarro(button) {
     row = button.closest('tr')
     condutor = row.querySelector('.nomedomotorista')
+    atrelarcarro = row.querySelectorAll('.atrelarcarro'.value)
+    paragrafo.innerHTML = ``
     paragrafo.innerHTML += `Selecione um carro para atrelar à ${condutor.innerText}`
     overlay.classList.add("active")
     atrelamento.classList.add("active")
     carrosadicionados.innerHTML = `<option value="selecionar" selected disabled>Selecionar</option>`
-    carrosadicionados.innerHTML += `<option></option>`
+    arraycarros.map(array => {
+        carrosadicionados.innerHTML += `
+        <option value="${array.modelo}">${array.modelo}</option>
+        `
+    })
 }
+let carroatrelado = []
+let carroatual;
+function atualizarPosicoes() {
+    const linhas = document.querySelectorAll('#motoristas tr');
+    linhas.forEach((linha, index) => {
+       return rowdriver = index 
+    });
+}
+function atrelar() {
+        
+    if (carrosadicionados.value != 'selecionar') {
+        if (carroatrelado.indexOf(carrosadicionados.value) == -1) {
+            carroatrelado.splice( arraymotoristas[atrelarcarro].carro, 1)
+            carroatual = carrosadicionados.value
+            carroatrelado.push(carroatual)
+            arraymotoristas[atrelarcarro].carro = carroatual
+            console.log(arraymotoristas);
+            atrelamento.classList.remove("active")
+            overlay.classList.remove("active")
+            estado = row.querySelector('.estado')
+            estado.innerHTML = `Ocupado`
+        }
+    } else {
+        alert("carro já atrelado ou não selecionado")
+    }
+    console.log(carroatrelado);
+    
+}
+// function restringirCarro() {
+//     console.log(carroatrelado);
+// }

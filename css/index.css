@@ -318,8 +318,8 @@ section {
     }
 }
 
-#btn-driver,
-#btn-cars {
+#btndriver,
+#btncars {
     position: relative;
     top: 0px;
     left: 10px;

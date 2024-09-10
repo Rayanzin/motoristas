@@ -94,10 +94,10 @@
         <p id="estado"></p>
         <button onclick="inserirMotorista()">Adicionar</button>
     </div>
-    <div id="btn-cars" onclick="tableCars()">
+    <div id="btncars" onclick="tableCars()">
         <box-icon type='solid' name='car'></box-icon>
     </div>
-    <div id="btn-driver" onclick="tableDrivers()">
+    <div id="btndriver" onclick="tableDrivers()">
         <box-icon name='user' type='solid'></box-icon>
     </div>
     <div id="errodecnh" class="modal erro">
@@ -110,13 +110,18 @@
         <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>Há campos a serem preenchidos</p>
     </div>
+    <div id="errodeatrelamento" class="modal erro">
+        <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
+        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <p>O carro escolhido já está ocupado, escolha outro</p>
+    </div>
     <div id="atrelamento" class="modal">
         <header>
             <h2>Atrelamento</h2>
         </header>
         <p id="paragrafo"></p>
-        <select id="carrosadicionados"></select>
-        <button>Atrelar</button>
+        <select id="carrosadicionados" ></select>
+        <button onclick="atrelar()">Atrelar</button>
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="../js/index.js"></script>
