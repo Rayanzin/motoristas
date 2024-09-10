@@ -1,5 +1,5 @@
 let dados
-fetch("http://localhost:300/users").then(function (response) {
+fetch("http://localhost:3000/users").then(function (response) {
     response.json().then(function (data) {
         listarCarros(data)
         console.log(data);
@@ -185,10 +185,9 @@ cnh.addEventListener('keyup', (e => {
 }))
 let cnhs = []
 let arraymotoristas = []
-let count = -1
-let rowdriver
 function inserirMotorista() {
     atualizarPosicoes()
+    console.log(rowdriver);
     if (cnhs.indexOf(cnh.value) == -1) {
         if (driver.value != '' && cnh.value != '') {
             cnhs.push(cnh.value)
@@ -198,13 +197,12 @@ function inserirMotorista() {
             <td class="estado">livre</td>
             <td>
             <abbr title="Detalhes"><button class="eye"><box-icon name='show-alt'></box-icon></button></abbr>
-            <abbr title="Atrelar Carro"><button class="atrelarcarro" value="atualizarPosicoes()" onclick="atrelarCarro(this)"><box-icon type='solid' name='car'></box-icon></button></abbr>
+            <abbr title="Atrelar Carro"><button class="poscarro" onclick="atrelarCarro(this, ${rowdriver})"><box-icon type='solid' name='car'></box-icon></button></abbr>
             <abbr title="Excluir Motorista"><button class="lixo" value="${cnh.value}" onclick="desejaExcluir(this)" ><box-icon type='solid'
             name='trash'></box-icon></button></abbr>
             </td>
             </tr>
             `
-            count++
             addmotorista.classList.remove("active")
             overlay.classList.remove("active")
             arraymotoristas.push(
@@ -214,8 +212,9 @@ function inserirMotorista() {
                     carro: ``
                 }
             )
-            console.log(arraymotoristas);
 
+            // console.log(arraymotoristas[poscarro]);
+            // console.log(arraymotoristas[poscarro].carro = 'oi');
         } else {
             preencher.classList.add("active")
         }
@@ -225,10 +224,12 @@ function inserirMotorista() {
 }
 let condutor
 let atrelarcarro
-function atrelarCarro(button) {
+let posscarro = ''
+function atrelarCarro(button, pos) {
+    posscarro = pos
     row = button.closest('tr')
     condutor = row.querySelector('.nomedomotorista')
-    atrelarcarro = row.querySelectorAll('.atrelarcarro'.value)
+    atrelarcarro = row.querySelectorAll('.poscarro')
     paragrafo.innerHTML = ``
     paragrafo.innerHTML += `Selecione um carro para atrelar à ${condutor.innerText}`
     overlay.classList.add("active")
@@ -242,20 +243,21 @@ function atrelarCarro(button) {
 }
 let carroatrelado = []
 let carroatual;
+let rowdriver = -1
 function atualizarPosicoes() {
     const linhas = document.querySelectorAll('#motoristas tr');
     linhas.forEach((linha, index) => {
-       return rowdriver = index 
+        return rowdriver = index
     });
 }
+
 function atrelar() {
-        
     if (carrosadicionados.value != 'selecionar') {
         if (carroatrelado.indexOf(carrosadicionados.value) == -1) {
-            carroatrelado.splice( arraymotoristas[atrelarcarro].carro, 1)
+            // carroatrelado.splice(arraymotoristas[poscarro].carro, 1)
             carroatual = carrosadicionados.value
             carroatrelado.push(carroatual)
-            arraymotoristas[atrelarcarro].carro = carroatual
+            arraymotoristas[posscarro].carro = carroatual
             console.log(arraymotoristas);
             atrelamento.classList.remove("active")
             overlay.classList.remove("active")
@@ -266,7 +268,7 @@ function atrelar() {
         alert("carro já atrelado ou não selecionado")
     }
     console.log(carroatrelado);
-    
+
 }
 // function restringirCarro() {
 //     console.log(carroatrelado);
