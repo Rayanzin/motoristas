@@ -7,6 +7,7 @@
           {
             "nome": "onix",
             "placa": "JKL3T12",
+            "ocupado": "false",
             "cores": [
               {
                 "cor": "branco"
@@ -28,6 +29,7 @@
           {
             "nome": "prisma",
             "placa": "PQR6A78",
+            "ocupado": "false",
             "cores": [
               {
                 "cor": "branco"
@@ -49,6 +51,7 @@
           {
             "nome": "spin",
             "placa": "MNO5Y34",
+            "ocupado": "false",
             "cores": [
               {
                 "cor": "branco"
@@ -75,6 +78,7 @@
           {
             "nome": "ka",
             "placa": "ABC1D23",
+            "ocupado": "false",
             "cores": [
               {
                 "cor": "branco"
@@ -96,6 +100,7 @@
           {
             "nome": "fiesta",
             "placa": "XYZ4E56",
+            "ocupado": "false",
             "cores": [
               {
                 "cor": "branco"
@@ -117,6 +122,7 @@
           {
             "nome": "ecoSport",
             "placa": "QWE7R89",
+            "ocupado": "false",
             "cores": [
               {
                 "cor": "branco"

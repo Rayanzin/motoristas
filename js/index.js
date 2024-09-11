@@ -177,20 +177,27 @@ function tableDrivers() {
     tabeladecarros.style.display = 'none'
     motorista.style.display = 'block'
 }
-
-cnh.addEventListener('keyup', (e => {
-    let carteira = e.target.value.slice(0, 10)
-    e.target.value = carteira
-}))
+function validateInput(input) {
+    // Remove qualquer caractere que não seja número
+    input.value = input.value.replace(/[^0-9]/g, '');
+}
+function validateLetters(input) {
+    // Remove qualquer caractere que não seja letra
+    input.value = input.value.replace(/[^a-zA-Z]/g, '');
+}
 let cnhs = []
 let arraymotoristas = []
+btninsertdriver.addEventListener('click', e => {
+    e.preventDefault()
+})
 function inserirMotorista() {
-    atualizarPosicoes()
-    console.log(rowdriver);
-    if (cnhs.indexOf(cnh.value) == -1) {
-        if (driver.value != '' && cnh.value != '') {
-            cnhs.push(cnh.value)
-            motoristas.innerHTML += `
+    if (driver.value.length > 3 && cnh.value.length == 10) {
+        atualizarPosicoes()
+        console.log(rowdriver);
+        if (cnhs.indexOf(cnh.value) == -1) {
+            if (driver.value != '' && cnh.value != '') {
+                cnhs.push(cnh.value)
+                motoristas.innerHTML += `
             <tr value="">
             <td class="nomedomotorista" value="${driver.value}">${driver.value}</td>
             <td class="estado">livre</td>
@@ -202,20 +209,23 @@ function inserirMotorista() {
             </td>
             </tr>
             `
-            addmotorista.classList.remove("active")
-            overlay.classList.remove("active")
-            arraymotoristas.push(
-                {
-                    nome: `${driver.value}`,
-                    estado: "livre",
-                    carro: ``
-                }
-            )
+                addmotorista.classList.remove("active")
+                overlay.classList.remove("active")
+                arraymotoristas.push(
+                    {
+                        nome: `${driver.value}`,
+                        estado: "livre",
+                        carro: ``
+                    }
+                )
+            } else {
+                preencher.classList.add("active")
+            }
         } else {
-            preencher.classList.add("active")
+            errodecnh.classList.add("active")
         }
     } else {
-        errodecnh.classList.add("active")
+        alert("faltam digitos")
     }
 }
 let condutor
@@ -251,51 +261,23 @@ function restringirCarro() {
     carroatual = carrosadicionados.value
 }
 function atrelar() {
-    if (carroatual != 'selecionar') {
+    if (carrosadicionados.value != 'selecionar') {
         if (carroatrelado.indexOf(carroatual) == -1) {
-            if (carroatrelado.indexOf(arraymotoristas[posscarro].carro) != -1) {
-                console.log(carroatrelado);
-                console.log(`carro: ${arraymotoristas[posscarro].carro}`);
-                carroatrelado.splice(arraymotoristas[posscarro].carro, 1)
+            let carroAnterior = arraymotoristas[posscarro].carro;
+            if (carroatrelado.indexOf(carroAnterior) != -1) {
+                let indiceCarroAnterior = carroatrelado.indexOf(carroAnterior);
+                carroatrelado.splice(indiceCarroAnterior, 1);
             }
-            carroatrelado.push(carroatual)
-            console.log(carroatrelado);
-            arraymotoristas[posscarro].carro = carroatual
-            // console.log(arraymotoristas[posscarro]);
+            carroatrelado.push(carroatual);
+            arraymotoristas[posscarro].carro = carroatual;
+            atrelamento.classList.remove("active");
+            overlay.classList.remove("active");
+            estado = row.querySelector('.estado');
+            estado.innerHTML = `Ocupado`;
         } else {
-            alert("deu n")
+            alert("Este carro já está atrelado a outro motorista.");
         }
     } else {
-        alert("deu n")
+        alert("selecione um carro")
     }
-    atrelamento.classList.remove("active")
-    overlay.classList.remove("active")
-    estado = row.querySelector('.estado')
-    estado.innerHTML = `Ocupado`
-
-
-
-
-
-    // if (carrosadicionados.value != 'selecionar') {
-    //     if (carroatrelado.indexOf(carroatual) == -1) {
-    //         if (carroatrelado.indexOf(arraymotoristas[posscarro].carro) != -1) {
-    //             carroatrelado.splice(arraymotoristas[posscarro].carro, 1)
-    //             console.log(arraymotoristas[posscarro].carro);
-    //         }
-    //         arraymotoristas[posscarro].carro = carroatual
-    //         carroatrelado.push(carroatual)
-    //         console.log(arraymotoristas);
-    //         console.log(carroatrelado);
-    //         atrelamento.classList.remove("active")
-    //         overlay.classList.remove("active")
-    //         estado = row.querySelector('.estado')
-    //         estado.innerHTML = `Ocupado`
-    //     } else {
-    //         alert("carro já atrelado ou não selecionado")
-    //     }
-    // } else {
-    //     alert("carro já atrelado ou não selecionado")
-    // }
-
 }
