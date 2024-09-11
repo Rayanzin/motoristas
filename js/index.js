@@ -149,7 +149,6 @@ function excluirCarro() {
     arrayplacas.splice(placa.value, 1)
     cnhs.splice(placa.value, 1)
     carroatrelado.splice(carrosadicionados.value, 1)
-    count--
 }
 let corSelecionada
 function editarCarro(button) {
@@ -212,9 +211,6 @@ function inserirMotorista() {
                     carro: ``
                 }
             )
-
-            // console.log(arraymotoristas[poscarro]);
-            // console.log(arraymotoristas[poscarro].carro = 'oi');
         } else {
             preencher.classList.add("active")
         }
@@ -251,25 +247,55 @@ function atualizarPosicoes() {
     });
 }
 
+function restringirCarro() {
+    carroatual = carrosadicionados.value
+}
 function atrelar() {
-    if (carrosadicionados.value != 'selecionar') {
-        if (carroatrelado.indexOf(carrosadicionados.value) == -1) {
-            // carroatrelado.splice(arraymotoristas[poscarro].carro, 1)
-            carroatual = carrosadicionados.value
+    if (carroatual != 'selecionar') {
+        if (carroatrelado.indexOf(carroatual) == -1) {
+            if (carroatrelado.indexOf(arraymotoristas[posscarro].carro) != -1) {
+                console.log(carroatrelado);
+                console.log(`carro: ${arraymotoristas[posscarro].carro}`);
+                carroatrelado.splice(arraymotoristas[posscarro].carro, 1)
+            }
             carroatrelado.push(carroatual)
+            console.log(carroatrelado);
             arraymotoristas[posscarro].carro = carroatual
-            console.log(arraymotoristas);
-            atrelamento.classList.remove("active")
-            overlay.classList.remove("active")
-            estado = row.querySelector('.estado')
-            estado.innerHTML = `Ocupado`
+            // console.log(arraymotoristas[posscarro]);
+        } else {
+            alert("deu n")
         }
     } else {
-        alert("carro já atrelado ou não selecionado")
+        alert("deu n")
     }
-    console.log(carroatrelado);
+    atrelamento.classList.remove("active")
+    overlay.classList.remove("active")
+    estado = row.querySelector('.estado')
+    estado.innerHTML = `Ocupado`
+
+
+
+
+
+    // if (carrosadicionados.value != 'selecionar') {
+    //     if (carroatrelado.indexOf(carroatual) == -1) {
+    //         if (carroatrelado.indexOf(arraymotoristas[posscarro].carro) != -1) {
+    //             carroatrelado.splice(arraymotoristas[posscarro].carro, 1)
+    //             console.log(arraymotoristas[posscarro].carro);
+    //         }
+    //         arraymotoristas[posscarro].carro = carroatual
+    //         carroatrelado.push(carroatual)
+    //         console.log(arraymotoristas);
+    //         console.log(carroatrelado);
+    //         atrelamento.classList.remove("active")
+    //         overlay.classList.remove("active")
+    //         estado = row.querySelector('.estado')
+    //         estado.innerHTML = `Ocupado`
+    //     } else {
+    //         alert("carro já atrelado ou não selecionado")
+    //     }
+    // } else {
+    //     alert("carro já atrelado ou não selecionado")
+    // }
 
 }
-// function restringirCarro() {
-//     console.log(carroatrelado);
-// }
