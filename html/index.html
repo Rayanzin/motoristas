@@ -88,10 +88,11 @@
         </header>
         <form>
             <label for="driver">Motorista:</label>
-            <input type="text" minlength="3" id="driver" placeholder="Digite Seu Nome" oninput="validateLetters(this)" required>
+            <input type="text" minlength="3" id="driver" placeholder="Digite Seu Nome" oninput="validateLetters(this)"
+                required>
             <label for="cnh">Cnh:</label>
-            <input type="text" id="cnh" placeholder="EX: 1234567890" minlength="10" maxlength="10"
-                oninput="validateInput(this)" required>
+            <input type="text" id="cnh" placeholder="EX: 1234567890" maxlength="10" oninput="validateInput(this)"
+                required>
             <p id="estado"></p>
             <button id="btninsertdriver" onclick="inserirMotorista()">Adicionar</button>
         </form>
@@ -125,9 +126,29 @@
         <select id="carrosadicionados" onchange="restringirCarro()"></select>
         <button onclick="atrelar()">Atrelar</button>
     </div>
+    <div id="selecionarcarro" class="modal erro">
+        <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
+        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <p>Selecione um carro</p>
+    </div>
+    <div id="mincaracteres" class="modal erro">
+        <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
+        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <p>Nome ou Cnh incorreta</p>
+        <p>O nome deve conter pelo menos 4 caracteres</p>
+    </div>
+    <div id="visualizar" class="modal">
+        <header>
+            <h2>carro atual</h2>
+        </header>
+        <div id="dadoscarro"> 
+            <p><strong>Carro:</strong> Nenhum</p>
+        </div>
+    </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="../js/index.js"></script>
     <!-- npm init -y -->
     <!-- npx json-server api.json --port 3000 --watch -->
 </body>
+
 </html>

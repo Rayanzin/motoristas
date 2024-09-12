@@ -34,13 +34,11 @@ table,
     margin: auto;
     width: 98%;
     margin-bottom: 10px;
-
     & th {
         padding: 5px;
         border: 1px solid black;
         font-size: 1.2em;
         background-color: rgb(136, 134, 134);
-
         & button {
             border: none;
             background-color: rgb(199, 158, 54);
@@ -48,7 +46,6 @@ table,
             border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
-
             &:hover {
                 background-color: rgb(168, 127, 24);
                 color: rgba(0, 0, 0, 0.712);
@@ -61,7 +58,6 @@ table,
         padding: 5px;
         text-align: center;
         border: 1px solid black;
-
         & button {
             border: none;
             background-color: rgb(197, 197, 195);
@@ -70,17 +66,14 @@ table,
             font-weight: bold;
             cursor: pointer;
             transition: .3s;
-
             &:hover {
                 fill: rgb(223, 161, 5);
                 color: rgba(0, 0, 0, 0.712);
             }
         }
-
         & .eye:hover {
             fill: rgb(115, 106, 252);
         }
-
         & .lixo:hover {
             fill: rgb(243, 26, 26);
         }
@@ -93,7 +86,6 @@ section {
 
 #motorista {
     display: block;
-
     & #motoristas {
         & th {
             width: 33%;
@@ -109,31 +101,9 @@ section {
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-
     &.active {
         opacity: 1;
         visibility: visible;
-    }
-}
-
-#addcarros {
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s;
-
-    &.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    & form {
-        width: 250px;
-
-        & label {
-            font-weight: bold;
-            margin-top: 10px;
-        }
     }
 }
 
@@ -159,7 +129,6 @@ section {
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-
     &.active {
         opacity: 1;
         visibility: visible;
@@ -169,12 +138,10 @@ section {
         display: block;
         cursor: pointer;
         margin-inline-start: auto;
-
         &:hover {
             fill: red;
         }
     }
-
     & h2 {
         margin-bottom: 10px;
         display: flex;
@@ -184,7 +151,7 @@ section {
         font-size: 2em;
         fill: red;
     }
-    & p{
+    & p {
         text-align: center;
     }
 }
@@ -200,7 +167,6 @@ section {
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-
     &.active {
         opacity: 1;
         visibility: visible;
@@ -220,11 +186,9 @@ section {
             color: white;
             font-weight: bold;
             cursor: pointer;
-
             &:hover {
                 background-color: darkred;
             }
-
             &:nth-child(2) {
                 background-color: rgb(51, 90, 229);
 
@@ -236,22 +200,7 @@ section {
     }
 }
 
-#edicao {
-    opacity: 0;
-    visibility: hidden;
-    transform: .3s;
-    overflow: hidden;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.32);
 
-    & label {
-        font-weight: bold;
-    }
-
-    &.active {
-        opacity: 1;
-        visibility: visible;
-    }
-}
 
 .modal {
     background-color: white;
@@ -263,7 +212,6 @@ section {
     transform: translate(-50%, -50%);
     overflow: hidden;
     padding: 20px;
-
     & header {
         margin: -20px -20px 10px -20px;
     }
@@ -290,12 +238,10 @@ section {
             background-color: rgb(177, 135, 26);
         }
     }
-
     & label {
         font-weight: bold;
         margin-top: 10px;
     }
-
     & input {
         width: 100%;
         border-radius: 10px;
@@ -303,18 +249,6 @@ section {
         padding: 5px;
         padding-left: 10px;
         margin: 10px 0px;
-    }
-}
-
-#addmotorista {
-    width: 300px;
-    opacity: 0;
-    visibility: hidden;
-    transition: .3s;
-
-    &.active {
-        opacity: 1;
-        visibility: visible;
     }
 }
 
@@ -334,19 +268,38 @@ section {
     cursor: pointer;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.37);
     transition: .3s;
-
     &:hover {
         background-color: rgb(177, 135, 26);
         width: 55px;
         height: 55px;
     }
 }
-#atrelamento{
+
+#errodeatrelamento{
+    z-index: 1;
+}
+#atrelamento,
+#selecionar,
+#addmotorista,
+#edicao,
+#addcarros,
+#visualizar {
     width: 300px;
     opacity: 0;
     visibility: hidden;
     transition: .3s;
-
+    overflow: hidden;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.32);
+    & form {
+        width: 250px;
+        & label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    }
+    & p{
+        margin-top: 15px;
+    }
     &.active {
         opacity: 1;
         visibility: visible;

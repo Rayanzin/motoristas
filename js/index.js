@@ -16,30 +16,15 @@ function adicionarCarro() {
     addcarros.classList.add("active")
 }
 overlay.addEventListener('click', (e => {
-    overlay.classList.remove("active")
-    addcarros.classList.remove("active")
-    erro.classList.remove('active')
-    confirmar.classList.remove("active")
-    edicao.classList.remove("active")
-    addmotorista.classList.remove("active")
-    preencher.classList.remove("active")
-    errodecnh.classList.remove('active')
-    atrelamento.classList.remove("active")
-    paragrafo.innerHTML = ``
+    removerTodosModais()
 }))
 btncars.addEventListener('click', e => {
-    overlay.classList.remove("active")
-    addcarros.classList.remove("active")
-    erro.classList.remove('active')
-    confirmar.classList.remove("active")
-    edicao.classList.remove("active")
-    addmotorista.classList.remove("active")
-    preencher.classList.remove("active")
-    errodecnh.classList.remove('active')
-    atrelamento.classList.remove("active")
-    paragrafo.innerHTML = ``
+    removerTodosModais()
 })
 btndriver.addEventListener('click', e => {
+    removerTodosModais()
+})
+function removerTodosModais() {
     overlay.classList.remove("active")
     addcarros.classList.remove("active")
     erro.classList.remove('active')
@@ -49,8 +34,11 @@ btndriver.addEventListener('click', e => {
     preencher.classList.remove("active")
     errodecnh.classList.remove('active')
     atrelamento.classList.remove("active")
+    mincaracteres.classList.remove("active")
+    visualizar.classList.remove("active")
+    errodeatrelamento.classList.remove("active")
     paragrafo.innerHTML = ``
-})
+}
 function listarCarros(dados) {
     mark.innerHTML = `<option selected disabled value="selecione">Selecione</option>`
     for (let i = 0; i <= dados.marca.length - 1; i++) {
@@ -90,6 +78,7 @@ btn.addEventListener('click', (e => {
 }))
 let arrayplacas = []
 let arraycarros = []
+
 function inserirCarro() {
     if (arrayplacas.indexOf(placa.value) == -1) {
         if (mark.value != 'selecione' && modelo.value != 'selecione') {
@@ -113,8 +102,8 @@ function inserirCarro() {
             overlay.classList.remove("active")
             arraycarros.push(
                 {
-                    marca: `${car.nome}`,
                     modelo: `${car.modelos[modelo.value].nome}`,
+                    marca: `${car.nome}`,
                     cor: `${cor.value}`,
                     placa: `${placa.value}`
                 }
@@ -127,8 +116,10 @@ function inserirCarro() {
 function fecharTelaDeErro() {
     erro.classList.remove('active')
     errodecnh.classList.remove('active')
-    errodecnh.classList.remove('active')
     preencher.classList.remove("active")
+    selecionarcarro.classList.remove("active")
+    mincaracteres.classList.remove("active")
+    errodeatrelamento.classList.remove("active")
 }
 let lixeira
 function desejaExcluir(tr) {
@@ -149,6 +140,8 @@ function excluirCarro() {
     arrayplacas.splice(placa.value, 1)
     cnhs.splice(placa.value, 1)
     carroatrelado.splice(carrosadicionados.value, 1)
+    console.log(cnhs);
+    
 }
 let corSelecionada
 function editarCarro(button) {
@@ -193,39 +186,37 @@ btninsertdriver.addEventListener('click', e => {
 function inserirMotorista() {
     if (driver.value.length > 3 && cnh.value.length == 10) {
         atualizarPosicoes()
-        console.log(rowdriver);
         if (cnhs.indexOf(cnh.value) == -1) {
-            if (driver.value != '' && cnh.value != '') {
-                cnhs.push(cnh.value)
-                motoristas.innerHTML += `
+            cnhs.push(cnh.value)
+            motoristas.innerHTML += `
             <tr value="">
             <td class="nomedomotorista" value="${driver.value}">${driver.value}</td>
             <td class="estado">livre</td>
             <td>
-            <abbr title="Detalhes"><button class="eye"><box-icon name='show-alt'></box-icon></button></abbr>
+            <abbr title="Detalhes"><button class="eye" onclick="visualizarCarro(${rowdriver})"><box-icon name='show-alt'></box-icon></button></abbr>
             <abbr title="Atrelar Carro"><button class="poscarro" onclick="atrelarCarro(this, ${rowdriver})"><box-icon type='solid' name='car'></box-icon></button></abbr>
             <abbr title="Excluir Motorista"><button class="lixo" value="${cnh.value}" onclick="desejaExcluir(this)" ><box-icon type='solid'
             name='trash'></box-icon></button></abbr>
             </td>
             </tr>
             `
-                addmotorista.classList.remove("active")
-                overlay.classList.remove("active")
-                arraymotoristas.push(
-                    {
-                        nome: `${driver.value}`,
-                        estado: "livre",
-                        carro: ``
-                    }
-                )
-            } else {
-                preencher.classList.add("active")
-            }
+            console.log(cnhs);
+            
+            addmotorista.classList.remove("active")
+            overlay.classList.remove("active")
+            arraymotoristas.push(
+                {
+                    nome: `${driver.value}`,
+                    estado: "livre",
+                    carro: ``,
+                    placa: ``
+                }
+            )
         } else {
             errodecnh.classList.add("active")
         }
     } else {
-        alert("faltam digitos")
+        mincaracteres.classList.add("active")
     }
 }
 let condutor
@@ -275,9 +266,17 @@ function atrelar() {
             estado = row.querySelector('.estado');
             estado.innerHTML = `Ocupado`;
         } else {
-            alert("Este carro já está atrelado a outro motorista.");
+            errodeatrelamento.classList.add("active")
         }
     } else {
-        alert("selecione um carro")
+        selecionarcarro.classList.add("active")
     }
+}
+function visualizarCarro(posicaocarro) {
+    overlay.classList.add("active")
+    visualizar.classList.add("active")
+    dadoscarro.innerHTML = ''
+    dadoscarro.innerHTML = `
+        <p><strong>Carro:</strong> ${arraymotoristas[posicaocarro].carro}</p>
+    `
 }
