@@ -62,14 +62,21 @@
     </div>
     <div id="erro" class="erro">
         <box-icon class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
-        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <h2>Aviso <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>O carro já existe ou não foi selecionado, por favor selecione outro!</p>
     </div>
-    <div id="confirmar">
+    <div id="confirmarcarro">
         <h2>Deseja realmente excluir?</h2>
         <div>
             <button onclick="fecharConfirmarExcluir()">Cancelar</button>
             <button onclick="excluirCarro()">Confirmar</button>
+        </div>
+    </div>
+    <div id="confirmarmotorista">
+        <h2>Deseja realmente excluir?</h2>
+        <div>
+            <button onclick="fecharConfirmarExcluir()">Cancelar</button>
+            <button onclick="excluirMotorista()">Confirmar</button>
         </div>
     </div>
     <div id="edicao" class="modal">
@@ -97,25 +104,20 @@
             <button id="btninsertdriver" onclick="inserirMotorista()">Adicionar</button>
         </form>
     </div>
-    <div id="btncars" onclick="tableCars()">
-        <box-icon type='solid' name='car'></box-icon>
-    </div>
-    <div id="btndriver" onclick="tableDrivers()">
-        <box-icon name='user' type='solid'></box-icon>
-    </div>
+
     <div id="errodecnh" class="modal erro">
         <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
-        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <h2>Aviso <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>CNH incorreta ou já existente</p>
     </div>
     <div id="preencher" class="modal erro">
         <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
-        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <h2>Aviso <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>Há campos a serem preenchidos</p>
     </div>
     <div id="errodeatrelamento" class="modal erro">
         <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
-        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <h2>Aviso <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>O carro escolhido já está ocupado, escolha outro</p>
     </div>
     <div id="atrelamento" class="modal">
@@ -128,21 +130,27 @@
     </div>
     <div id="selecionarcarro" class="modal erro">
         <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
-        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <h2>Aviso <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>Selecione um carro</p>
     </div>
     <div id="mincaracteres" class="modal erro">
         <box-icon id="exit" class="exit" onclick="fecharTelaDeErro()" type='solid' name='x-circle'></box-icon>
-        <h2>Erro <box-icon type='solid' name='error-alt'></box-icon></h2>
+        <h2>Aviso <box-icon type='solid' name='error-alt'></box-icon></h2>
         <p>Nome ou Cnh incorreta</p>
         <p>O nome deve conter pelo menos 4 caracteres</p>
     </div>
     <div id="visualizar" class="modal">
         <header>
-            <h2>carro atual</h2>
+            <h2>Detalhes</h2>
         </header>
-        <div id="dadoscarro"> 
-            <p><strong>Carro:</strong> Nenhum</p>
+        <div id="dadoscarro"></div>
+    </div>
+    <div id="trocartable">
+        <div id="btncars" onclick="tableCars()">
+            <box-icon type='solid' name='car'></box-icon>
+        </div>
+        <div id="btndriver" onclick="tableDrivers()">
+            <box-icon name='user' type='solid'></box-icon>
         </div>
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>

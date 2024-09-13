@@ -28,7 +28,8 @@ function removerTodosModais() {
     overlay.classList.remove("active")
     addcarros.classList.remove("active")
     erro.classList.remove('active')
-    confirmar.classList.remove("active")
+    confirmarcarro.classList.remove("active")
+    confirmarmotorista.classList.remove("active")
     edicao.classList.remove("active")
     addmotorista.classList.remove("active")
     preencher.classList.remove("active")
@@ -37,6 +38,7 @@ function removerTodosModais() {
     mincaracteres.classList.remove("active")
     visualizar.classList.remove("active")
     errodeatrelamento.classList.remove("active")
+    selecionarcarro.classList.remove("active")
     paragrafo.innerHTML = ``
 }
 function listarCarros(dados) {
@@ -85,7 +87,7 @@ function inserirCarro() {
             arrayplacas.push(placa.value)
             let car = dados.marca[mark.value]
             table.innerHTML += `
-                    <tr>
+                    <tr class="even">
                         <td>${car.nome}</td>
                         <td>${car.modelos[modelo.value].nome}</td>
                         <td class="cor" value="${cor.value}">${cor.value}</td>
@@ -122,26 +124,45 @@ function fecharTelaDeErro() {
     errodeatrelamento.classList.remove("active")
 }
 let lixeira
-function desejaExcluir(tr) {
+let rowcnh
+let positioncar
+function desejaExcluir(tr, pos) {
+    positioncar = pos
     lixeira = tr
-    confirmar.classList.add("active")
+    let row = tr.closest("tr")
+    rowcnh = row.querySelector('.cnhhidden button')
+    if(tr.parentElement == table){
+        confirmarcarro.classList.add("active")
+    }else{
+        confirmarmotorista.classList.add("active")
+    }
     overlay.classList.add("active")
 }
 function fecharConfirmarExcluir() {
-    confirmar.classList.remove("active")
+    confirmarcarro.classList.remove("active")
+    confirmarmotorista.classList.remove("active")
     overlay.classList.remove("active")
 }
 function excluirCarro() {
+    atualizarPosicoes()
     let abbr = lixeira.parentElement
     let td = abbr.parentElement
     td.parentElement.remove()
-    confirmar.classList.remove("active")
+    confirmarcarro.classList.remove("active")
     overlay.classList.remove("active")
     arrayplacas.splice(placa.value, 1)
-    cnhs.splice(placa.value, 1)
+}
+function excluirMotorista(){
+    atualizarPosicoes()
+    let abbr = lixeira.parentElement
+    let td = abbr.parentElement
+    td.parentElement.remove()
+    confirmarmotorista.classList.remove("active")
+    overlay.classList.remove("active")
+    let cnhremove = cnhs.indexOf(rowcnh.value)
+    cnhs.splice(cnhremove, 1)
     carroatrelado.splice(carrosadicionados.value, 1)
-    console.log(cnhs);
-    
+    arraymotoristas.splice(positioncar,1)
 }
 let corSelecionada
 function editarCarro(button) {
@@ -189,19 +210,18 @@ function inserirMotorista() {
         if (cnhs.indexOf(cnh.value) == -1) {
             cnhs.push(cnh.value)
             motoristas.innerHTML += `
-            <tr value="">
-            <td class="nomedomotorista" value="${driver.value}">${driver.value}</td>
+            <tr>
+            <td class="cnhhidden" hidden><button  value="${cnh.value}"></button></td>
+            <td class="nomedomotorista">${driver.value}</td>
             <td class="estado">livre</td>
             <td>
-            <abbr title="Detalhes"><button class="eye" onclick="visualizarCarro(${rowdriver})"><box-icon name='show-alt'></box-icon></button></abbr>
+            <abbr title="Detalhes"><button class="eye" onclick="visualizarCarro(this,${rowdriver})"><box-icon name='show-alt'></box-icon></button></abbr>
             <abbr title="Atrelar Carro"><button class="poscarro" onclick="atrelarCarro(this, ${rowdriver})"><box-icon type='solid' name='car'></box-icon></button></abbr>
-            <abbr title="Excluir Motorista"><button class="lixo" value="${cnh.value}" onclick="desejaExcluir(this)" ><box-icon type='solid'
+            <abbr title="Excluir Motorista"><button class="lixo" value="${cnh.value}" onclick="desejaExcluir(this, ${rowdriver})" ><box-icon type='solid'
             name='trash'></box-icon></button></abbr>
             </td>
             </tr>
             `
-            console.log(cnhs);
-            
             addmotorista.classList.remove("active")
             overlay.classList.remove("active")
             arraymotoristas.push(
@@ -209,11 +229,15 @@ function inserirMotorista() {
                     nome: `${driver.value}`,
                     estado: "livre",
                     carro: ``,
-                    placa: ``
+                    cnh: `${cnh.value}`
                 }
             )
+            console.log(rowdriver);
+            console.log(arraymotoristas);
         } else {
             errodecnh.classList.add("active")
+            console.log(cnhs);
+            
         }
     } else {
         mincaracteres.classList.add("active")
@@ -272,11 +296,14 @@ function atrelar() {
         selecionarcarro.classList.add("active")
     }
 }
-function visualizarCarro(posicaocarro) {
+function visualizarCarro(tr, posicaocarro) {
+    let row = tr.closest("tr")
+    rowcnh = row.querySelector('.cnhhidden button')
     overlay.classList.add("active")
     visualizar.classList.add("active")
     dadoscarro.innerHTML = ''
-    dadoscarro.innerHTML = `
+    dadoscarro.innerHTML += `
         <p><strong>Carro:</strong> ${arraymotoristas[posicaocarro].carro}</p>
+        <p><strong>Cnh:</strong> ${rowcnh.value}</p>
     `
 }
