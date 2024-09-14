@@ -111,6 +111,8 @@ function inserirCarro() {
                     placa: `${placa.value}`
                 }
             )
+        }else{
+            erro.classList.add("active")
         }
     } else {
         erro.classList.add("active")
