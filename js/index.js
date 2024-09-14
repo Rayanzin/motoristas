@@ -39,6 +39,7 @@ function removerTodosModais() {
     visualizar.classList.remove("active")
     errodeatrelamento.classList.remove("active")
     selecionarcarro.classList.remove("active")
+    trocartable.classList.remove('active')
     paragrafo.innerHTML = ``
 }
 function listarCarros(dados) {
@@ -306,4 +307,8 @@ function visualizarCarro(tr, posicaocarro) {
         <p><strong>Carro:</strong> ${arraymotoristas[posicaocarro].carro}</p>
         <p><strong>Cnh:</strong> ${rowcnh.value}</p>
     `
+}
+function abrirMenu(){
+    trocartable.classList.add('active')
+    overlay.classList.add('active')
 }
