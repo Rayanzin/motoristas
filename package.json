@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/speed-insights": "^1.0.12",
     "json-server": "^0.17.4"
   },
-  "devDependencies": {},
   "description": ""
 }
