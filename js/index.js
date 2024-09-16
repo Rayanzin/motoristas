@@ -296,13 +296,13 @@ function atrelar() {
             if (carroatrelado.indexOf(carroAnterior) != -1) {
                 let indiceCarroAnterior = carroatrelado.indexOf(carroAnterior);
                 carroatrelado.splice(indiceCarroAnterior, 1);
-                carroatrelado.push(carroatual);
-                arraymotoristas[posscarro].carro = carroatual;
-                atrelamento.classList.remove("active");
-                overlay.classList.remove("active");
-                estado = row.querySelector('.estado');
-                estado.innerHTML = `Ocupado`;
             }
+            carroatrelado.push(carroatual);
+            arraymotoristas[posscarro].carro = carroatual;
+            atrelamento.classList.remove("active");
+            overlay.classList.remove("active");
+            estado = row.querySelector('.estado');
+            estado.innerHTML = `Ocupado`;
         } else {
             errodeatrelamento.classList.add("active")
         }
